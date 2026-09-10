@@ -30,7 +30,7 @@
   <!-- Favicons -->
   <link href="assets/img/fav.jpg" rel="icon">
   <link href="assets/img/fav.jpg" rel="apple-touch-icon">
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
@@ -39,20 +39,14 @@
     rel="stylesheet">
 
   <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
-
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css?v=5" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css?v=5" rel="stylesheet">
+  <link href="assets/vendor/aos/aos.css?v=5" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css?v=5" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css?v=5" rel="stylesheet">
 
   <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
-  <script src="https://unpkg.com/gsap@3/dist/ScrollTrigger.min.js"></script>
+  <link href="assets/css/main.css?v=5" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Strategy
@@ -86,49 +80,6 @@
       animation: pulseScale 8s ease-in-out infinite;
     }
 
-    .scroll-reveal-section {
-      height: 100vh;
-      padding: 100px 20px;
-      background: #031119;
-      text-align: center;
-    }
-
-    .scroll-reveal span {
-      font-size: clamp(1.5rem, 5vw, 5rem);
-      /* Responsive font size */
-      font-weight: 600;
-      display: inline-block;
-      background-clip: text;
-      -webkit-background-clip: text;
-      color: hsl(0 0% 100% / 0.15);
-      background-repeat: no-repeat;
-      background-size: 0% 100%;
-      background-image: linear-gradient(90deg, #fff, #fff);
-      animation: scroll-reveal 2s linear forwards;
-      animation-timeline: view();
-    }
-
-    /* Scroll range control */
-    .scroll-reveal-section h2 span {
-      animation-range-start: contain 20vh;
-      animation-range-end: contain 30vh;
-    }
-
-    /* Slower animation */
-    @keyframes scroll-reveal {
-      100% {
-        background-size: 100% 100%;
-        color: transparent;
-        /* Keep transparent as gradient fills */
-      }
-    }
-
-    /* Optional: Reduce top spacing on small screens */
-    @media (max-width: 768px) {
-      .scroll-reveal-section {
-        padding: 60px 15px;
-      }
-    }
   </style>
 </head>
 
@@ -139,7 +90,7 @@
       class="header-container container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
-        <img id="logoImage" src="assets/img/logo.png" alt="">
+        <img id="logoImage" src="assets/img/logo.png" alt="Rootpix web development team working on a project">
       </a>
 
       <nav id="navmenu" class="navmenu">
@@ -149,11 +100,12 @@
           <li><a href="#services">What We Do</a></li>
           <li><a href="#portfolio">Portfolio</a></li>
           <li><a href="#contact">Contact</a></li>
+          <li class="mobile-cta-item d-xl-none"><a href="https://wa.me/917025488181?text=Hi%2C%20I'm%20interested%20in%20your%20services" target="_blank" class="mobile-getstarted-btn">Get Started <i class="bi bi-arrow-right"></i></a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted " href="https://wa.me/918281107749?text=Hi%2C%20I'm%20interested%20in%20your%20services"
+      <a class="btn-getstarted " href="https://wa.me/917025488181?text=Hi%2C%20I'm%20interested%20in%20your%20services"
         target="_blank">Get Started <i class="bi bi-arrow-right"></i></a>
 
     </div>
@@ -164,8 +116,8 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
       <div class="container">
-        <div class="row">
-          <div class="col-lg-7 content-col" data-aos="fade-up">
+        <div class="row align-items-center">
+          <div class="col-lg-6 content-col order-2 order-lg-1" data-aos="fade-up">
             <div class="content">
               <div class="agency-name">
                 <h5>Idea Rooted, Brand Elevated</h5>
@@ -196,10 +148,14 @@
             </div>
           </div>
 
-          <div class="col-lg-5" data-aos="zoom-out">
+          <div class="col-lg-6 visual-col order-1 order-lg-2" data-aos="zoom-out">
             <div class="visual-content">
               <div class="fluid-shape">
-                <img src="assets/img/hero (1).png" alt="Abstract Fluid Shape" class="fluid-img">
+                <div class="skull-glow-backdrop"></div>
+                <canvas id="skullCanvas" class="skull-canvas"></canvas>
+                <div class="skull-interactive-hint">
+                  <i class="bi bi-arrow-left-right"></i> Scroll or Drag to Rotate
+                </div>
               </div>
 
               <div class="stats-card">
@@ -248,22 +204,28 @@
         <!-- Your YouTube Video + Form (use actual embed & form content here) -->
         <div class="popup-body">
           <div class="video-form-wrapper">
-            <!-- LEFT SIDE VIDEO -->
+            <!-- LEFT SIDE BRAND INFO -->
             <div class="video-side">
               <!-- SVG 1 -->
-              <svg class="animated-svg svg-one" width="30" height="30" viewBox="0 0 100 100" fill="#ffffff"
+              <svg class="animated-svg svg-one" width="26" height="26" viewBox="0 0 100 100" fill="#00dfc4"
                 xmlns="http://www.w3.org/2000/svg">
-                <circle cx="50" cy="50" r="40" />
+                <circle cx="50" cy="50" r="40" opacity="0.3" />
               </svg>
 
               <!-- SVG 2 -->
-              <svg class="animated-svg svg-two" width="30" height="30" viewBox="0 0 100 100" fill="#ffffff"
+              <svg class="animated-svg svg-two" width="26" height="26" viewBox="0 0 100 100" fill="#3b82f6"
                 xmlns="http://www.w3.org/2000/svg">
-                <polygon points="50,15 90,85 10,85" />
+                <polygon points="50,15 90,85 10,85" opacity="0.3" />
               </svg>
 
+              <div class="popup-badge mb-3">
+                <i class="bi bi-chat-dots-fill"></i> Let's Collaborate
+              </div>
 
-              <h2>Let’s disscuse make<br>something cool together</h2>
+              <h2>Let’s discuss & build<br><span style="color: #00dfc4;">something cool together</span></h2>
+              <p class="mt-2 text-white-50" style="font-size: 0.92rem; line-height: 1.5; max-width: 300px;">
+                Turn your ideas into scalable web & mobile solutions with Rootpix.
+              </p>
             </div>
 
 
@@ -274,21 +236,23 @@
                 in your mind?</h2>
               <p>Share your interest, and we’ll chat!</p>
              <!-- Inside your HTML -->
-<form id="contact-form">
-  <input type="text" name="user_name" placeholder="Name" required>
+<form id="popup-contact-form">
+  <input type="text" name="user_name" placeholder="Your Name" required>
   <select name="inquiry_type" required>
-    <option value="">--Select your Inquiry Type--</option>
-    <option value="general">General</option>
-    <option value="business">Business</option>
-    <option value="tech">Tech</option>
+    <option value="">-- Select Inquiry Type --</option>
+    <option value="web-development">Web Development</option>
+    <option value="app-development">Mobile App Development</option>
+    <option value="ui-ux">UI/UX Design</option>
+    <option value="digital-marketing">Digital Marketing</option>
+    <option value="general">Other Inquiries</option>
   </select>
-  <input type="email" name="user_email" placeholder="Email" required>
-  <button type="submit">Submit →</button>
+  <input type="email" name="user_email" placeholder="Your Email Address" required>
+  <button type="submit">Submit Inquiry →</button>
 
   <!-- Optional messages -->
   <div class="loading" style="display:none;">Sending...</div>
-  <div class="sent-message" style="display:none; color: green;">Sent successfully!</div>
-  <div class="error-message" style="display:none; color: red;">Error occurred!</div>
+  <div class="sent-message" style="display:none; color: #00dfc4;">Sent successfully! We will contact you soon.</div>
+  <div class="error-message" style="display:none; color: #ff6b6b;">Error occurred! Please try again.</div>
 </form>
 
             </div>
@@ -317,12 +281,7 @@
         <div class="row gx-5 align-items-center">
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="about-image position-relative">
-              <svg class="faq-arrow" width="300" height="611" viewBox="0 0 200 211" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M198.804 194.488C189.279 189.596 179.529 185.52 169.407 182.07L169.384 182.049C169.227 181.994 169.07 181.939 168.912 181.884C166.669 181.139 165.906 184.546 167.669 185.615C174.053 189.473 182.761 191.837 189.146 195.695C156.603 195.912 119.781 196.591 91.266 179.049C62.5221 161.368 48.1094 130.695 56.934 98.891C84.5539 98.7247 112.556 84.0176 129.508 62.667C136.396 53.9724 146.193 35.1448 129.773 30.2717C114.292 25.6624 93.7109 41.8875 83.1971 51.3147C70.1109 63.039 59.63 78.433 54.2039 95.0087C52.1221 94.9842 50.0776 94.8683 48.0703 94.6608C30.1803 92.8027 11.2197 83.6338 5.44902 65.1074C-1.88449 41.5699 14.4994 19.0183 27.9202 1.56641C28.6411 0.625793 27.2862 -0.561638 26.5419 0.358501C13.4588 16.4098 -0.221091 34.5242 0.896608 56.5659C1.8218 74.6941 14.221 87.9401 30.4121 94.2058C37.7076 97.0203 45.3454 98.5003 53.0334 98.8449C47.8679 117.532 49.2961 137.487 60.7729 155.283C87.7615 197.081 139.616 201.147 184.786 201.155L174.332 206.827C172.119 208.033 174.345 211.287 176.537 210.105C182.06 207.125 187.582 204.122 193.084 201.144C193.346 201.147 195.161 199.887 195.423 199.868C197.08 198.548 193.084 201.144 195.528 199.81C196.688 199.192 197.846 198.552 199.006 197.935C200.397 197.167 200.007 195.087 198.804 194.488ZM60.8213 88.0427C67.6894 72.648 78.8538 59.1566 92.1207 49.0388C98.8475 43.9065 106.334 39.2953 114.188 36.1439C117.295 34.8947 120.798 33.6609 124.168 33.635C134.365 33.5511 136.354 42.9911 132.638 51.031C120.47 77.4222 86.8639 93.9837 58.0983 94.9666C58.8971 92.6666 59.783 90.3603 60.8213 88.0427Z"
-                  fill="currentColor"></path>
-              </svg>
+              <img src="assets/img/about-agency.jpg" alt="Rootpix Digital Solutions Team" class="img-fluid rounded-4 shadow mb-3" style="width: 100%; object-fit: cover; max-height: 480px;">
               <div class="experience-badge">
                 <span class="years">3+</span>
                 <span class="text">Years of Expertise</span>
@@ -377,35 +336,35 @@
             <div class="logo-slider-container" data-aos="fade-up" data-aos-delay="200">
               <div class="logo-slider-track primary">
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="IPSY"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="web development using React digital marketing UI UX website software design company best agency in India "
                     class="img-fluid">
                 </div>
                 <div class="client-logo">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg"
-                    alt="Kohler" class="img-fluid">
+                    alt="web development using Angular digital marketing UI UX website software design company best agency in India" class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="Zadea"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" alt="web development using React and Vue.js digital marketing UI UX website software design company best agency in India"
                     class="img-fluid">
                 </div>
                 <div class="client-logo">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/bootstrap/bootstrap-plain.svg"
-                    alt="Under Armour" class="img-fluid">
+                    alt="web development using React and Bootstrap digital marketing UI UX website software design company best agency in India" class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="Alo"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg" alt="web development using Front end as React.Backend as Node.js digital marketing UI UX website software design company best agency in India"
                     class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="Lowes"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg" alt="web development using Front end as React. Backend as Node.js and framework is Express digital marketing UI UX website software design company best agency in India"
                     class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="	https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
-                    alt="Coach" class="img-fluid">
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg"
+                    alt="MongoDB Database" class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="Tatcha"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="MySQL Database"
                     class="img-fluid">
                 </div>
 
@@ -413,37 +372,37 @@
 
               <div class="logo-slider-track secondary">
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="IPSY"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg" alt="Firebase"
                     class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Kohler"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg" alt="Redux"
                     class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" alt="Zadea"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg" alt="GraphQL"
                     class="img-fluid">
                 </div>
                 <div class="client-logo">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
-                    alt="Under Armour" class="img-fluid">
+                    alt="Docker" class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="https://vitejs.dev/logo.svg" alt="Alo" class="img-fluid">
+                  <img src="https://vitejs.dev/logo.svg" alt="Vite" class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" alt="Lowes"
+                  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jquery/jquery-original.svg" alt="jQuery"
                     class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="	https://www.vectorlogo.zone/logos/framer/framer-icon.svg" alt="Coach" class="img-fluid">
+                  <img src="https://www.vectorlogo.zone/logos/framer/framer-icon.svg" alt="Framer" class="img-fluid">
                 </div>
                 <div class="client-logo">
                   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/wordpress/wordpress-plain.svg"
-                    alt="Tatcha" class="img-fluid">
+                    alt="WordPress" class="img-fluid">
                 </div>
                 <div class="client-logo">
-                  <img src="	https://cdn.worldvectorlogo.com/logos/shopify.svg" alt="Tapestry" class="img-fluid">
+                  <img src="https://cdn.worldvectorlogo.com/logos/shopify.svg" alt="Shopify" class="img-fluid">
                 </div>
               </div>
             </div>
@@ -484,7 +443,7 @@
                   We integrate forward-thinking strategies, creative approaches, and state-of-the-art technologies to
                   deliver exceptional customer experiences that drive growth and engage target markets.
                 </p>
-                <a href="https://wa.me/918281107749?text=Hi%2C%20I'm%20interested%20in%20your%20services"
+                <a href="https://wa.me/917025488181?text=Hi%2C%20I'm%20interested%20in%20your%20services"
                   target="_blank" class="service-btn">
                   Connect with Us
                   <i class="bi bi-arrow-right"></i>
@@ -504,7 +463,7 @@
                 <i class="bi bi-arrow-up-right"></i>
               </a>
               <h3>
-                <a href="service-details.html">
+                <a href="#services">
                   UI/UX Design</span>
                 </a>
               </h3>
@@ -525,7 +484,7 @@
                 <i class="bi bi-arrow-up-right"></i>
               </a>
               <h3>
-                <a href="service-details.html">
+                <a href="#services">
                   Web Development</span>
                 </a>
               </h3>
@@ -723,11 +682,11 @@
             </div>
 
             <div class="cta-buttons d-flex flex-wrap gap-3">
-              <a href="https://wa.me/918281107749?text=Hi%20I'm%20interested%20in%20the%20Free%20Trial"
+              <a href="https://wa.me/917025488181?text=Hi%20I'm%20interested%20in%20the%20Free%20Trial"
                 class="btn btn-primary" target="_blank">
                 Start Free Trial
               </a>
-              <a href="https://wa.me/918281107749?text=I'd%20like%20to%20learn%20more%20about%20your%20services"
+              <a href="https://wa.me/917025488181?text=I'd%20like%20to%20learn%20more%20about%20your%20services"
                 class="btn btn-outline" target="_blank">
                 Learn More
               </a>
@@ -801,44 +760,19 @@
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
               <article class="portfolio-entry">
                 <figure class="entry-image">
-                  <img src="https://img.youtube.com/vi/tBObk72EYYw/maxresdefault.jpg" class="img-fluid" alt=""
+                  <img src="assets/img/portfolio/portfolio-car-rental.jpg" class="img-fluid" alt="Car Rental Web Platform"
                     loading="lazy">
                   <div class="entry-overlay">
                     <div class="overlay-content">
                       <div class="entry-meta">Web Development</div>
-                      <h3 class="entry-title">Car Rental</h3>
+                      <h3 class="entry-title">Car Rental Platform</h3>
                       <div class="entry-links">
-                        <a href="https://img.youtube.com/vi/tBObk72EYYw/maxresdefault.jpg" class="glightbox"
-                          data-gallery="portfolio-gallery-ui"
-                          data-glightbox="title: Mobile Banking App; description: Praesent commodo cursus magna, vel scelerisque nisl consectetur.">
-                          <i class="bi bi-arrows-angle-expand"></i>
-                        </a>
-                        <a href="portfolio-details.html">
-                          <i class="bi bi-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </figure>
-              </article>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
-              <article class="portfolio-entry">
-                <figure class="entry-image">
-                  <img src="https://img.youtube.com/vi/RkYIWg5XAnI/maxresdefault.jpg" class="img-fluid" alt=""
-                    loading="lazy">
-                  <div class="entry-overlay">
-                    <div class="overlay-content">
-                      <div class="entry-meta">Web Development</div>
-                      <h3 class="entry-title">AI SaaS</h3>
-                      <div class="entry-links">
-                        <a href="https://img.youtube.com/vi/RkYIWg5XAnI/maxresdefault.jpg" class="glightbox"
+                        <a href="assets/img/portfolio/portfolio-car-rental.jpg" class="glightbox"
                           data-gallery="portfolio-gallery-development"
-                          data-glightbox="title: E-Learning Platform; description: Nulla vitae elit libero, a pharetra augue mollis interdum.">
+                          data-glightbox="title: Car Rental Platform; description: Modern luxury vehicle booking and fleet management system.">
                           <i class="bi bi-arrows-angle-expand"></i>
                         </a>
-                        <a href="portfolio-details.html">
+                        <a href="#portfolio">
                           <i class="bi bi-arrow-right"></i>
                         </a>
                       </div>
@@ -851,19 +785,19 @@
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
               <article class="portfolio-entry">
                 <figure class="entry-image">
-                  <img src="https://img.youtube.com/vi/yl9pwazDHUw/maxresdefault.jpg" class="img-fluid" alt=""
+                  <img src="assets/img/portfolio/portfolio-ai-saas.jpg" class="img-fluid" alt="AI SaaS Platform"
                     loading="lazy">
                   <div class="entry-overlay">
                     <div class="overlay-content">
                       <div class="entry-meta">Web Development</div>
-                      <h3 class="entry-title">Blog App</h3>
+                      <h3 class="entry-title">AI SaaS Platform</h3>
                       <div class="entry-links">
-                        <a href="https://img.youtube.com/vi/yl9pwazDHUw/maxresdefault.jpg" class="glightbox"
-                          data-gallery="portfolio-gallery-photography"
-                          data-glightbox="title: Urban Architecture; description: Sed ut perspiciatis unde omnis iste natus error sit voluptatem.">
+                        <a href="assets/img/portfolio/portfolio-ai-saas.jpg" class="glightbox"
+                          data-gallery="portfolio-gallery-development"
+                          data-glightbox="title: AI SaaS Platform; description: Next-generation AI analytics and prompt engineering platform.">
                           <i class="bi bi-arrows-angle-expand"></i>
                         </a>
-                        <a href="portfolio-details.html">
+                        <a href="#portfolio">
                           <i class="bi bi-arrow-right"></i>
                         </a>
                       </div>
@@ -876,69 +810,94 @@
             <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
               <article class="portfolio-entry">
                 <figure class="entry-image">
-                  <img src="https://img.youtube.com/vi/PaQX0pktLnw/maxresdefault.jpg" class="img-fluid" alt=""
+                  <img src="assets/img/portfolio/portfolio-blog-app.jpg" class="img-fluid" alt="Tech Publication Platform"
+                    loading="lazy">
+                  <div class="entry-overlay">
+                    <div class="overlay-content">
+                      <div class="entry-meta">Web Development</div>
+                      <h3 class="entry-title">Tech Blog Platform</h3>
+                      <div class="entry-links">
+                        <a href="assets/img/portfolio/portfolio-blog-app.jpg" class="glightbox"
+                          data-gallery="portfolio-gallery-development"
+                          data-glightbox="title: Tech Publication Platform; description: High performance publishing platform and content hub.">
+                          <i class="bi bi-arrows-angle-expand"></i>
+                        </a>
+                        <a href="#portfolio">
+                          <i class="bi bi-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </article>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
+              <article class="portfolio-entry">
+                <figure class="entry-image">
+                  <img src="assets/img/portfolio/portfolio-ecommerce.jpg" class="img-fluid" alt="Ecommerce & Express Delivery"
                     loading="lazy">
                   <div class="entry-overlay">
                     <div class="overlay-content">
                       <div class="entry-meta">Web Development</div>
                       <h3 class="entry-title">Ecommerce & Delivery</h3>
                       <div class="entry-links">
-                        <a href="https://img.youtube.com/vi/PaQX0pktLnw/maxresdefault.jpg" class="glightbox"
-                          data-gallery="portfolio-gallery-marketing"
-                          data-glightbox="title: Social Media Campaign; description: Quis autem vel eum iure reprehenderit qui in ea voluptate.">
-                          <i class="bi bi-arrows-angle-expand"></i>
-                        </a>
-                        <a href="portfolio-details.html">
-                          <i class="bi bi-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </figure>
-              </article>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
-              <article class="portfolio-entry">
-                <figure class="entry-image">
-                  <img src="https://img.youtube.com/vi/XZj4hmbNdSE/maxresdefault.jpg" class="img-fluid" alt=""
-                    loading="lazy">
-                  <div class="entry-overlay">
-                    <div class="overlay-content">
-                      <div class="entry-meta">Web Development</div>
-                      <h3 class="entry-title">LMS Website</h3>
-                      <div class="entry-links">
-                        <a href="https://img.youtube.com/vi/XZj4hmbNdSE/maxresdefault.jpg" class="glightbox"
-                          data-gallery="portfolio-gallery-ui"
-                          data-glightbox="title: Smart Home Interface; description: At vero eos et accusamus et iusto odio dignissimos ducimus.">
-                          <i class="bi bi-arrows-angle-expand"></i>
-                        </a>
-                        <a href="portfolio-details.html">
-                          <i class="bi bi-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </figure>
-              </article>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
-              <article class="portfolio-entry">
-                <figure class="entry-image">
-                  <img src="https://img.youtube.com/vi/eRTTlS0zaW8/maxresdefault.jpg" class="img-fluid" alt=""
-                    loading="lazy">
-                  <div class="entry-overlay">
-                    <div class="overlay-content">
-                      <div class="entry-meta">Web Development</div>
-                      <h3 class="entry-title">Doctor Appoinment </h3>
-                      <div class="entry-links">
-                        <a href="https://img.youtube.com/vi/eRTTlS0zaW8/maxresdefault.jpg" class="glightbox"
+                        <a href="assets/img/portfolio/portfolio-ecommerce.jpg" class="glightbox"
                           data-gallery="portfolio-gallery-development"
-                          data-glightbox="title: Cloud Management System; description: Temporibus autem quibusdam et aut officiis debitis.">
+                          data-glightbox="title: Ecommerce & Express Delivery; description: Full-featured online store with live delivery tracking.">
                           <i class="bi bi-arrows-angle-expand"></i>
                         </a>
-                        <a href="portfolio-details.html">
+                        <a href="#portfolio">
+                          <i class="bi bi-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </article>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
+              <article class="portfolio-entry">
+                <figure class="entry-image">
+                  <img src="assets/img/portfolio/portfolio-lms.jpg" class="img-fluid" alt="LMS Learning Platform"
+                    loading="lazy">
+                  <div class="entry-overlay">
+                    <div class="overlay-content">
+                      <div class="entry-meta">Web Development</div>
+                      <h3 class="entry-title">LMS Platform</h3>
+                      <div class="entry-links">
+                        <a href="assets/img/portfolio/portfolio-lms.jpg" class="glightbox"
+                          data-gallery="portfolio-gallery-development"
+                          data-glightbox="title: LMS Platform; description: Interactive e-learning and student progress management portal.">
+                          <i class="bi bi-arrows-angle-expand"></i>
+                        </a>
+                        <a href="#portfolio">
+                          <i class="bi bi-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </article>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-development">
+              <article class="portfolio-entry">
+                <figure class="entry-image">
+                  <img src="assets/img/portfolio/portfolio-doctor-app.jpg" class="img-fluid" alt="Doctor Appointment & Telehealth"
+                    loading="lazy">
+                  <div class="entry-overlay">
+                    <div class="overlay-content">
+                      <div class="entry-meta">Web Development</div>
+                      <h3 class="entry-title">Doctor Appointment</h3>
+                      <div class="entry-links">
+                        <a href="assets/img/portfolio/portfolio-doctor-app.jpg" class="glightbox"
+                          data-gallery="portfolio-gallery-development"
+                          data-glightbox="title: Doctor Appointment & Telehealth; description: Seamless patient appointment scheduling and telehealth consultation.">
+                          <i class="bi bi-arrows-angle-expand"></i>
+                        </a>
+                        <a href="#portfolio">
                           <i class="bi bi-arrow-right"></i>
                         </a>
                       </div>
@@ -952,45 +911,45 @@
               <article class="portfolio-entry">
                 <figure class="entry-image">
                   <img
-                    src="https://s3-alpha.figma.com/hub/file/5400890266/da240a7b-5a11-4b6f-9bcf-0d0950504f64-cover.png"
-                    class="img-fluid" alt="" loading="lazy">
+                    src="assets/img/portfolio/portfolio-mobile-app-1.jpg"
+                    class="img-fluid" alt="Mobile App Development Solutions" loading="lazy">
                   <div class="entry-overlay">
                     <div class="overlay-content">
                       <div class="entry-meta">Mobile Application</div>
-                      <h3 class="entry-title">Tour Packages</h3>
+                      <h3 class="entry-title">Enterprise Mobile Companion</h3>
                       <div class="entry-links">
-                        <a href="https://s3-alpha.figma.com/hub/file/5400890266/da240a7b-5a11-4b6f-9bcf-0d0950504f64-cover.png"
-                          class="glightbox" data-gallery="portfolio-gallery-photography"
-                          data-glightbox="title: Nature Collection; description: Integer posuere erat a ante venenatis dapibus posuere velit aliquet.">
-                          <i class="bi bi-arrows-angle-expand"></i>
-                        </a>
-                        <a href="portfolio-details.html">
-                          <i class="bi bi-arrow-right"></i>
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                </figure>
-              </article>
-            </div><!-- End Portfolio Item -->
-
-            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-marketing">
-              <article class="portfolio-entry">
-                <figure class="entry-image">
-                  <img
-                    src="https://s3-alpha.figma.com/hub/file/2344173673/resized/1200x720/b242ed93-0bf1-4666-9669-f500865cc360-cover.png"
-                    class="img-fluid" alt="" loading="lazy">
-                  <div class="entry-overlay">
-                    <div class="overlay-content">
-                      <div class="entry-meta">Mobile Application</div>
-                      <h3 class="entry-title">Online Bike Shopping</h3>
-                      <div class="entry-links">
-                        <a href="https://s3-alpha.figma.com/hub/file/2344173673/resized/1200x720/b242ed93-0bf1-4666-9669-f500865cc360-cover.png"
+                        <a href="assets/img/portfolio/portfolio-mobile-app-1.jpg"
                           class="glightbox" data-gallery="portfolio-gallery-marketing"
-                          data-glightbox="title: Brand Strategy; description: Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum.">
+                          data-glightbox="title: Enterprise Mobile Companion; description: High-performing mobile application with custom workflows and analytics.">
                           <i class="bi bi-arrows-angle-expand"></i>
                         </a>
-                        <a href="portfolio-details.html">
+                        <a href="#portfolio">
+                          <i class="bi bi-arrow-right"></i>
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </figure>
+              </article>
+            </div><!-- End Portfolio Item -->
+
+            <div class="col-xl-3 col-lg-4 col-md-6 portfolio-item isotope-item filter-marketing">
+              <article class="portfolio-entry">
+                <figure class="entry-image">
+                  <img
+                    src="assets/img/portfolio/portfolio-mobile-app-2.jpg"
+                    class="img-fluid" alt="Mobile E-Commerce & Express Delivery App" loading="lazy">
+                  <div class="entry-overlay">
+                    <div class="overlay-content">
+                      <div class="entry-meta">Mobile Application</div>
+                      <h3 class="entry-title">Mobile E-Commerce & Delivery</h3>
+                      <div class="entry-links">
+                        <a href="assets/img/portfolio/portfolio-mobile-app-2.jpg"
+                          class="glightbox" data-gallery="portfolio-gallery-marketing"
+                          data-glightbox="title: Mobile E-Commerce & Delivery; description: Full-featured mobile shopping app with live order routing and fast checkout.">
+                          <i class="bi bi-arrows-angle-expand"></i>
+                        </a>
+                        <a href="#portfolio">
                           <i class="bi bi-arrow-right"></i>
                         </a>
                       </div>
@@ -1054,7 +1013,7 @@
                 </ul>
               </div>
               <div class="plan-cta">
-                <a href="https://wa.me/918281107749?text=Hi%2C%20I'm%20interested%20in%20your%20services"
+                <a href="https://wa.me/917025488181?text=Hi%2C%20I'm%20interested%20in%20the%20Basic%20Plan"
                   target="_blank" class="btn-plan">Choose Plan</a>
               </div>
             </div>
@@ -1089,7 +1048,7 @@
                 </ul>
               </div>
               <div class="plan-cta">
-                <a href="https://wa.me/918281107749?text=Hi%2C%20I'm%20interested%20in%20your%20services"
+                <a href="https://wa.me/917025488181?text=Hi%2C%20I'm%20interested%20in%20the%20Standard%20Plan"
                   target="_blank" class="btn-plan">Choose Plan</a>
               </div>
             </div>
@@ -1123,7 +1082,7 @@
                 </ul>
               </div>
               <div class="plan-cta">
-                <a href="https://wa.me/918281107749?text=Hi%2C%20I'm%20interested%20in%20your%20services"
+                <a href="https://wa.me/917025488181?text=Hi%2C%20I'm%20interested%20in%20the%20Premium%20Plan"
                   target="_blank" class="btn-plan">Choose Plan</a>
               </div>
             </div>
@@ -1139,13 +1098,20 @@
 
     <style>
       .blog-wrapper {
-
         color: #fff;
         padding: 80px 0;
+        overflow: hidden;
+        max-width: 100%;
+      }
+
+      .blogSwiper {
+        overflow: hidden;
+        width: 100%;
+        max-width: 100%;
       }
 
       .blog-left h2 {
-        font-size: 3rem;
+        font-size: clamp(2rem, 5vw, 3rem);
         font-weight: 700;
         line-height: 1.2;
       }
@@ -1229,7 +1195,7 @@
             <!-- Blog Slide 1 -->
             <div class="swiper-slide blog-card"
               data-title="Web Development Services That Drive Business Growth – Rootpix Technology"
-              data-img="/assets/img/web-2.jpg"
+              data-img="assets/img/blog-web-dev.jpg"
               data-desc="At Rootpix Technology, we specialize in delivering high-performing, responsive websites tailored to your business goals. Our team builds web solutions that are not only visually appealing but also optimized for SEO, mobile-first design, and performance. Whether you're a startup looking to build an online presence or a large-scale business in need of an enterprise-level solution, we provide complete development services that scale with your needs.
 
 Each project begins with a strategic approach — understanding your audience, your brand’s tone, and your business objectives. Our web development team crafts clean, semantic code that is optimized for speed and user experience. We use modern stacks like HTML5, CSS3, JavaScript frameworks (React, Vue), and back-end technologies like Laravel and Node.js.
@@ -1239,7 +1205,7 @@ Rootpix websites are SEO-ready, with fast load times, proper metadata, structure
 With every line of code, we aim to improve user experience, brand reputation, and lead generation. Our web development process also includes regular quality testing, cross-browser compatibility, and analytics setup to monitor success.
 
 Whether it’s a product landing page, portfolio site, blog, or eCommerce solution — we can deliver it. Let Rootpix Technology be your trusted web development partner in creating a digital platform that drives engagement and accelerates business growth.">
-              <img src="/assets/img/web-2.jpg" alt="Blog 1">
+              <img src="assets/img/blog-web-dev.jpg" alt="Web Development Blog">
               <div class="content">
                 <div class="date">July 25, 2025</div>
                 <h5>Web Development Services That Drive Business Growth – Rootpix Technology</h5>
@@ -1249,7 +1215,7 @@ Whether it’s a product landing page, portfolio site, blog, or eCommerce soluti
             <!-- Blog Slide 2 -->
             <div class="swiper-slide blog-card"
               data-title="Custom App Development for Businesses That Scale"
-              data-img="https://howincloud.com/images/empowered-business-woman-working-city.jpg"
+              data-img="assets/img/blog-app-dev.jpg"
               data-desc="In today’s fast-moving digital world, businesses need more than just generic software. They need powerful, customized tools that match their operations, workflows, and customer needs. Off-the-shelf apps may seem easy to deploy, but they often come with limitations, bloat, and lack of flexibility. That’s where custom app development becomes a game-changer.
 
 At Rootpix Technology, we help businesses scale with tailor-made web and mobile applications built from the ground up. Whether you're a startup launching your MVP, a mid-size company improving internal operations, or an enterprise automating workflows, our custom apps are designed to fit your exact vision and functionality.
@@ -1265,7 +1231,7 @@ Our agile process means you get weekly updates, working demos, and complete tran
 The result? Apps that reduce manual effort, improve user satisfaction, increase revenue, and give your business a serious digital edge.
 
 If you're ready to invest in a smart, future-ready app — Rootpix Technology is your trusted development partner. Let’s build the digital solution your business truly deserves.">
-              <img src="https://howincloud.com/images/empowered-business-woman-working-city.jpg" alt="Blog 2">
+              <img src="assets/img/blog-app-dev.jpg" alt="Blog 2">
               <div class="content">
                 <div class="date">July 25, 2025</div>
                 <h5>Custom App Development for Businesses That Scale</h5>
@@ -1275,7 +1241,7 @@ If you're ready to invest in a smart, future-ready app — Rootpix Technology is
             <!-- Blog Slide 3 -->
             <div class="swiper-slide blog-card"
               data-title="UI/UX Design for Startups"
-              data-img="/assets/img/AI.jpg"
+              data-img="assets/img/blog-ui-ux.jpg"
               data-desc="UI/UX design is more than just visuals — it's about creating seamless digital experiences that users love. At Rootpix Technology, we help startups build clean, intuitive, and engaging user interfaces that elevate brand trust and improve user retention. We focus on both form and function to ensure every interaction feels effortless.
 
 For startups, first impressions are everything. That’s why we start with user research and competitor analysis to design experiences that solve real problems. Whether it's a mobile app, SaaS dashboard, or marketing website, we build wireframes, prototypes, and high-fidelity UI that align with your product goals.
@@ -1287,7 +1253,7 @@ We design for responsiveness, accessibility, and performance, making sure your d
 By focusing on user journeys and emotional design, our goal is to turn visitors into loyal users. Great design isn't just about looking good — it's about solving problems intuitively.
 
 Rootpix Technology’s UI/UX solutions empower startups to pitch confidently, reduce bounce rates, and improve conversions. Let us help you design your next digital experience that users will love and investors will back.">
-              <img src="/assets/img/AI.jpg" alt="Blog 3">
+              <img src="assets/img/blog-ui-ux.jpg" alt="UI UX Design Blog">
               <div class="content">
                 <div class="date">July 25, 2025</div>
                 <h5>First Impressions Matter — Especially for Startups</h5>
@@ -1297,7 +1263,7 @@ Rootpix Technology’s UI/UX solutions empower startups to pitch confidently, re
             <!-- Blog Slide 4 -->
             <div class="swiper-slide blog-card"
               data-title="Digital Marketing Solutions in India"
-              data-img="https://howincloud.com/images/redux.jpg"
+              data-img="assets/img/blog-marketing.jpg"
               data-desc="In a country as digitally active as India, businesses need strong online marketing to stay competitive. At Rootpix Technology, we offer comprehensive digital marketing solutions that help Indian businesses grow visibility, attract leads, and increase ROI across multiple platforms. Our campaigns are data-driven, creative, and tailored to your specific goals.
 
 We start with a full digital audit and build a strategy that includes SEO, Google Ads, social media marketing, and content creation. From ranking your website on Google to generating conversions through Facebook & Instagram Ads, we cover the full funnel.
@@ -1309,7 +1275,7 @@ On the paid side, our PPC experts create high-converting ad campaigns with tight
 Social media is where your audience spends time — and we make sure your brand shows up with the right message. Our team creates reels, carousels, stories, and posts that build engagement and drive clicks.
 
 From lead generation to customer loyalty, our digital marketing packages are built for startups, local businesses, and growing brands across India. Let Rootpix help you scale online with proven digital marketing strategies that actually work.">
-              <img src="https://howincloud.com/images/redux.jpg" alt="Blog 4">
+              <img src="assets/img/blog-marketing.jpg" alt="Blog 4">
               <div class="content">
                 <div class="date">July 25, 2025</div>
                 <h5>Fuel Your Online Growth with Proven Digital Marketing</h5>
@@ -1484,7 +1450,9 @@ From lead generation to customer loyalty, our digital marketing packages are bui
               </div>
 
               <div class="info-content">
-                <h4><a href="tel:‪+91 8281107749 ‬">‪+91 8281107749‬</a></h4>
+                <h4>Call Us</h4>
+                <p><a href="tel:+917025488181">+91 7025488181</a></p>
+                <p><a href="tel:+917356864965">+91 7356864965</a></p>
                 <p>Monday-Fri: 9 AM - 6 PM</p>
                 <p>Saturday: 9 AM - 4 PM</p>
               </div>
@@ -1584,10 +1552,10 @@ From lead generation to customer loyalty, our digital marketing packages are bui
             development, UI/UX design, and digital marketing. We help businesses and startups bring their ideas to life
             through cutting-edge technology and creative design</p>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href="https://www.instagram.com/rootpix_officials/" target="_blank" rel="noopener noreferrer" title="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.linkedin.com/company/rootpix/" target="_blank" rel="noopener noreferrer" title="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="https://wa.me/917025488181" target="_blank" rel="noopener noreferrer" title="WhatsApp"><i class="bi bi-whatsapp"></i></a>
+            <a href="mailto:info@rootpix.com" title="Email"><i class="bi bi-envelope"></i></a>
           </div>
         </div>
 
@@ -1595,8 +1563,8 @@ From lead generation to customer loyalty, our digital marketing packages are bui
           <h4>Useful Links</h4>
           <ul>
             <li><a href="#">Home</a></li>
-            <li><a href="#">Who We Are</a></li>
-            <li><a href="#">What We Do</a></li>
+            <li><a href="#about">Who We Are</a></li>
+            <li><a href="#services">What We Do</a></li>
             <li><a href="#">Terms of service</a></li>
             <li><a href="#">Privacy policy</a></li>
           </ul>
@@ -1605,11 +1573,11 @@ From lead generation to customer loyalty, our digital marketing packages are bui
         <div class="col-lg-2 col-6 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><a href="#">UI/UX Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Mobile App Development</a></li>
-            <li><a href="#">Digital Marketing</a></li>
-            <li><a href="#">ERP</a></li>
+            <li><a href="#services">UI/UX Design</a></li>
+            <li><a href="#services">Web Development</a></li>
+            <li><a href="#services">Mobile App Development</a></li>
+            <li><a href="#services">Digital Marketing</a></li>
+            <li><a href="#services">ERP</a></li>
           </ul>
         </div>
 
@@ -1618,11 +1586,14 @@ From lead generation to customer loyalty, our digital marketing packages are bui
           <p>Lulu Cyber Tower</p>
           <p>Infopark, Kochi , 682042</p>
           <p>Kerala, India</p>
-          <p class="mt-4"><strong>Phone:</strong> <span><a href="tel:‪+91 8281107749‬">‪+91 8281107749‬</a></span></p>
+          <p class="mt-4"><strong>Phone:</strong><br>
+            <span><a href="tel:+917025488181">+91 7025488181</a></span><br>
+            <span><a href="tel:+917356864965">+91 7356864965</a></span>
+          </p>
           <p><strong>Email:</strong> <span><a
                 href="mailto:info@rootpix.com?subject=Inquiry&body=Hello, I want to know more about...">
                 info@rootpix.com
-                    </a></span></p>
+              </a></span></p>
         </div>
 
       </div>
@@ -1631,11 +1602,7 @@ From lead generation to customer loyalty, our digital marketing packages are bui
     <div class="container copyright text-center mt-4">
       <p>© <span>Copyright</span> <strong class="px-1 sitename">rootpix</strong> <span>All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
-        Designed by <a href="https://bootstrapmade.com/">rootpix</a>
+        Designed by <a href="https://www.instagram.com/rootpix_officials/" target="_blank" rel="noopener noreferrer">rootpix</a>
       </div>
     </div>
 
@@ -1643,12 +1610,12 @@ From lead generation to customer loyalty, our digital marketing packages are bui
 
   <!-- Scroll Top -->
   <!-- Call Button -->
-  <a href="tel:+918281107749" class="call-button d-flex align-items-center justify-content-center" title="Call Us">
+  <a href="tel:+917025488181" class="call-button d-flex align-items-center justify-content-center" title="Call Us">
     <i class="bi bi-telephone-fill"></i>
   </a>
 
   <!-- WhatsApp Button -->
-  <a href="https://wa.me/918281107749?text=Hi%2C%20I'm%20interested%20in%20your%20services" target="_blank"
+  <a href="https://wa.me/917025488181?text=Hi%2C%20I'm%20interested%20in%20your%20services" target="_blank"
     class="whatsapp-button d-flex align-items-center justify-content-center" title="Chat on WhatsApp">
     <i class="bi bi-whatsapp"></i>
   </a>
@@ -1659,102 +1626,104 @@ From lead generation to customer loyalty, our digital marketing packages are bui
   </a>
 
   <!-- Preloader -->
-  <div id="preloader"></div>
+  
 
   <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <!-- Swiper and Bootstrap Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js?v=5"></script>
+  <script src="assets/vendor/php-email-form/validate.js?v=5"></script>
+  <script src="assets/vendor/aos/aos.js?v=5"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js?v=5"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js?v=5"></script>
+  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js?v=5"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js?v=5"></script>
+
+  <!-- GSAP Core & ScrollTrigger -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js?v=5"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js?v=5"></script>
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js?v=5"></script>
 
   <!-- EmailJS SDK -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-  <!-- Add this just before </body> -->
-<script src="https://cdn.emailjs.com/dist/email.min.js"></script>
-<script>
-  (function () {
-    emailjs.init("DJGDX_ZQ9IYxMko9I"); // ✅ Replace this
-  })();
+  <script src="https://cdn.emailjs.com/dist/email.min.js?v=5"></script>
+  <script>
+    (function () {
+      emailjs.init("DJGDX_ZQ9IYxMko9I");
+    })();
 
-  document.getElementById("contact-form").addEventListener("submit", function (e) {
-    e.preventDefault();
+    function setupForm(formId) {
+      const form = document.getElementById(formId);
+      if (!form) return;
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
 
-    const loading = document.querySelector(".loading");
-    const error = document.querySelector(".error-message");
-    const success = document.querySelector(".sent-message");
+        const loading = form.querySelector(".loading");
+        const error = form.querySelector(".error-message");
+        const success = form.querySelector(".sent-message");
 
-    loading.style.display = "block";
-    error.style.display = "none";
-    success.style.display = "none";
+        if (loading) loading.style.display = "block";
+        if (error) error.style.display = "none";
+        if (success) success.style.display = "none";
 
-    emailjs.sendForm("service_x93mdd6", "template_gzm4obr", this)
-      .then(function () {
-        loading.style.display = "none";
-        success.style.display = "block";
-        document.getElementById("contact-form").reset();
-      }, function (err) {
-        loading.style.display = "none";
-        error.style.display = "block";
-        console.error("EmailJS Error:", err);
+        emailjs.sendForm("service_x93mdd6", "template_gzm4obr", this)
+          .then(function () {
+            if (loading) loading.style.display = "none";
+            if (success) success.style.display = "block";
+            form.reset();
+          }, function (err) {
+            if (loading) loading.style.display = "none";
+            if (error) {
+              error.textContent = "Unable to send message. Please reach us via WhatsApp or Call.";
+              error.style.display = "block";
+            }
+            console.error("EmailJS Error:", err);
+          });
       });
-  });
-</script>
+    }
+
+    setupForm("contact-form");
+    setupForm("popup-contact-form");
+  </script>
 
   <script>
     window.addEventListener("scroll", function () {
       const header = document.querySelector(".header");
       const logoImg = document.getElementById("logoImage");
+      if (!header || !logoImg) return;
 
       const isScrolled = window.scrollY > 50;
       header.classList.toggle("scrolled", isScrolled);
+      document.body.classList.toggle("scrolled", isScrolled);
 
       // Change the logo image on scroll
       if (isScrolled) {
-        logoImg.src = "assets/img/logo-dark.png"; // dark logo on scroll
+        logoImg.src = "assets/img/logo-dark.png";
       } else {
-        logoImg.src = "assets/img/logo.png"; // default logo
+        logoImg.src = "assets/img/logo.png";
       }
     });
   </script>
-
 
   <script>
     // Show popup after 3 seconds
     window.addEventListener('load', () => {
       setTimeout(() => {
-        document.getElementById('popupContainer').style.display = 'flex';
+        const popup = document.getElementById('popupContainer');
+        if (popup) popup.style.display = 'flex';
       }, 3000);
     });
 
     function closePopup() {
-      document.getElementById('popupContainer').style.display = 'none';
+      const popup = document.getElementById('popupContainer');
+      if (popup) popup.style.display = 'none';
     }
   </script>
 
-
-  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-
-  <!-- GSAP Core -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-  <!-- GSAP ScrollTrigger Plugin -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
   <script>
-    gsap.registerPlugin(ScrollTrigger);
-
     // Reusable function for row animation
     function animateRow(selector, speed = 100, direction = "left") {
       const row = document.querySelector(selector);
+      if (!row || typeof gsap === 'undefined') return;
       const distance = row.scrollWidth;
 
       gsap.fromTo(
@@ -1775,22 +1744,261 @@ From lead generation to customer loyalty, our digital marketing packages are bui
     animateRow(".row-3", 40, "left");
 
     // Reveal animation on scroll
-    gsap.utils.toArray(".tech-row").forEach((row, i) => {
-      gsap.from(row, {
-        scrollTrigger: {
-          trigger: row,
-          start: "top 90%",
-        },
-        opacity: 0,
-        y: 50,
-        duration: 1,
-        delay: i * 0.2,
-        ease: "power2.out"
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+      gsap.utils.toArray(".tech-row").forEach((row, i) => {
+        gsap.from(row, {
+          scrollTrigger: {
+            trigger: row,
+            start: "top 90%",
+          },
+          opacity: 0,
+          y: 50,
+          duration: 1,
+          delay: i * 0.2,
+          ease: "power2.out"
+        });
       });
-    });
+    }
   </script>
 
+  <!-- Interactive Letter-by-Letter Staggered Hover Effect -->
+  <script>
+    (function () {
+      function initLetterSplitHover() {
+        if (window.innerWidth < 1200) return;
+        const targets = document.querySelectorAll('.navmenu ul li:not(.mobile-cta-item) > a, .header-container > .btn-getstarted, .hero .cta-button .btn span');
 
+        targets.forEach(el => {
+          if (el.getAttribute('data-split-done')) return;
+          el.setAttribute('data-split-done', 'true');
+
+          const icon = el.querySelector('i');
+          const iconHTML = icon ? icon.outerHTML : '';
+          if (icon) icon.remove();
+
+          const rawText = el.textContent.trim();
+          if (!rawText) return;
+
+          el.innerHTML = '';
+          const words = rawText.split(' ');
+          let charCounter = 0;
+
+          words.forEach((word, wIndex) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.className = 'word';
+
+            for (let char of word) {
+              const charSpan = document.createElement('span');
+              charSpan.className = 'char';
+              charSpan.style.setProperty('--i', charCounter++);
+
+              const topSpan = document.createElement('span');
+              topSpan.className = 'char-top';
+              topSpan.textContent = char;
+
+              const botSpan = document.createElement('span');
+              botSpan.className = 'char-bot';
+              botSpan.textContent = char;
+
+              charSpan.appendChild(topSpan);
+              charSpan.appendChild(botSpan);
+              wordSpan.appendChild(charSpan);
+            }
+
+            el.appendChild(wordSpan);
+
+            if (wIndex < words.length - 1) {
+              const spaceSpan = document.createElement('span');
+              spaceSpan.className = 'word-space';
+              spaceSpan.innerHTML = '&nbsp;';
+              el.appendChild(spaceSpan);
+            }
+          });
+
+          if (iconHTML) {
+            el.insertAdjacentHTML('beforeend', ' ' + iconHTML);
+          }
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initLetterSplitHover);
+      } else {
+        initLetterSplitHover();
+      }
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth >= 1200) {
+          initLetterSplitHover();
+        }
+      });
+    })();
+  </script>
+
+  <!-- 3D Scrollytelling & Interactive 360° Rotation Engine (300 Frames) -->
+  <script>
+    (function () {
+      const canvas = document.getElementById("skullCanvas");
+      if (!canvas) return;
+
+      const ctx = canvas.getContext("2d", { alpha: true });
+      const TOTAL_FRAMES = 300;
+      const frames = new Array(TOTAL_FRAMES);
+      let loadedCount = 0;
+      let targetFrame = 75; // Start with dynamic 3/4 angle
+      let currentFrame = 75;
+      let isDragging = false;
+      let startX = 0;
+      let dragStartFrame = 0;
+      let idleTime = 0;
+      let lastUserInteract = Date.now();
+
+      function getFrameSrc(index1Based) {
+        const pad = String(index1Based).padStart(3, "0");
+        return `assets/img/hero_3d_frames/frame_${pad}.webp`;
+      }
+
+      function loadFrame(i) {
+        if (frames[i - 1]) return;
+        const img = new Image();
+        img.src = getFrameSrc(i);
+        img.onload = () => {
+          loadedCount++;
+          frames[i - 1] = img;
+          if (loadedCount === 1) {
+            resizeCanvas();
+            render();
+          }
+        };
+        frames[i - 1] = img;
+      }
+
+      // 1. Priority load initial keyframes immediately
+      [75, 1, 150, 225, 300, 35, 110, 185, 260].forEach(loadFrame);
+
+      // 2. Stream all remaining frames progressively in background
+      setTimeout(() => {
+        for (let i = 1; i <= TOTAL_FRAMES; i++) {
+          loadFrame(i);
+        }
+      }, 50);
+
+      function resizeCanvas() {
+        const rect = canvas.getBoundingClientRect();
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        const w = rect.width || 680;
+        const h = w * (580 / 600);
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        render();
+      }
+
+      window.addEventListener("resize", resizeCanvas);
+
+      function drawFrame(img) {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      }
+
+      function render() {
+        // Normalize frame index within 0 to TOTAL_FRAMES - 1
+        const rawIndex = Math.floor(currentFrame) % TOTAL_FRAMES;
+        const index = (rawIndex + TOTAL_FRAMES) % TOTAL_FRAMES;
+        const img = frames[index];
+
+        if (img && img.complete && img.naturalWidth) {
+          drawFrame(img);
+          return;
+        }
+
+        // Nearest loaded frame fallback to prevent any flicker during rapid scrubbing
+        for (let offset = 1; offset < TOTAL_FRAMES / 2; offset++) {
+          const f1 = (index + offset) % TOTAL_FRAMES;
+          const f2 = (index - offset + TOTAL_FRAMES) % TOTAL_FRAMES;
+          if (frames[f1] && frames[f1].complete && frames[f1].naturalWidth) {
+            drawFrame(frames[f1]);
+            return;
+          }
+          if (frames[f2] && frames[f2].complete && frames[f2].naturalWidth) {
+            drawFrame(frames[f2]);
+            return;
+          }
+        }
+      }
+
+      // Scroll-linked scrollytelling scrub
+      function handleScroll() {
+        if (isDragging) return;
+        lastUserInteract = Date.now();
+        const scrollY = window.scrollY || window.pageYOffset;
+        const heroSection = document.getElementById("hero");
+        const heroHeight = heroSection ? heroSection.offsetHeight : 700;
+
+        // Progressively rotate through all 300 frames as user scrolls through hero & next sections
+        const scrollProgress = scrollY / (heroHeight * 1.6);
+        targetFrame = 75 + (scrollProgress * TOTAL_FRAMES);
+      }
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+
+      // Interactive mouse drag
+      canvas.addEventListener("mousedown", (e) => {
+        isDragging = true;
+        startX = e.clientX;
+        dragStartFrame = targetFrame;
+        lastUserInteract = Date.now();
+        canvas.style.cursor = "grabbing";
+      });
+
+      window.addEventListener("mousemove", (e) => {
+        if (!isDragging) return;
+        lastUserInteract = Date.now();
+        const deltaX = e.clientX - startX;
+        targetFrame = dragStartFrame + (deltaX / 3);
+      });
+
+      window.addEventListener("mouseup", () => {
+        if (isDragging) {
+          isDragging = false;
+          canvas.style.cursor = "grab";
+        }
+      });
+
+      // Interactive touch drag for mobile & tablets
+      canvas.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 1) {
+          isDragging = true;
+          startX = e.touches[0].clientX;
+          dragStartFrame = targetFrame;
+          lastUserInteract = Date.now();
+        }
+      }, { passive: true });
+
+      window.addEventListener("touchmove", (e) => {
+        if (!isDragging || e.touches.length !== 1) return;
+        lastUserInteract = Date.now();
+        const deltaX = e.touches[0].clientX - startX;
+        targetFrame = dragStartFrame + (deltaX / 3);
+      }, { passive: true });
+
+      window.addEventListener("touchend", () => {
+        isDragging = false;
+      });
+
+      // 60FPS physics render loop with smooth lerp damping
+      function animate() {
+        // Buttery smooth lerp interpolation towards user scroll/drag target
+        currentFrame += (targetFrame - currentFrame) * 0.1;
+
+        render();
+        requestAnimationFrame(animate);
+      }
+
+      // Initial setup
+      setTimeout(resizeCanvas, 50);
+      requestAnimationFrame(animate);
+    })();
+  </script>
 
 </body>
 

@@ -96,6 +96,22 @@
   });
 
   /**
+   * Close mobile nav on backdrop click (outside sidebar)
+   */
+  document.addEventListener('click', (e) => {
+    if (document.body.classList.contains('mobile-nav-active')) {
+      const navmenu = document.querySelector('#navmenu');
+      const toggle = document.querySelector('.mobile-nav-toggle');
+      if (navmenu && toggle && !toggle.contains(e.target)) {
+        const sidebarUl = navmenu.querySelector('ul');
+        if (sidebarUl && !sidebarUl.contains(e.target)) {
+          mobileNavToogle();
+        }
+      }
+    }
+  });
+
+  /**
    * Toggle mobile nav dropdowns
    */
   document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
@@ -115,9 +131,20 @@
    */
   const preloader = document.querySelector('#preloader');
   if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
+    const removePreloader = () => {
+      preloader.style.transition = 'opacity 0.3s ease';
+      preloader.style.opacity = '0';
+      setTimeout(() => {
+        if (preloader.parentNode) preloader.remove();
+      }, 300);
+    };
+    if (document.readyState === 'complete' || document.readyState === 'interactive') {
+      removePreloader();
+    } else {
+      document.addEventListener('DOMContentLoaded', removePreloader);
+      window.addEventListener('load', removePreloader);
+      setTimeout(removePreloader, 400);
+    }
   }
 
   /**
@@ -266,14 +293,17 @@
 
 
 
- AOS.init({
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
       duration: 800,
       easing: 'ease-in-out',
       once: true,
       mirror: false
     });
+  }
     
-    // Enhanced hover effects with GSAP
+  // Enhanced hover effects with GSAP
+  if (typeof gsap !== 'undefined') {
     document.querySelectorAll('.client-logo').forEach(logo => {
       logo.addEventListener('mouseenter', () => {
         gsap.to(logo, {
@@ -293,83 +323,94 @@
     });
     
     // Parallax effect for floating shapes
-    window.addEventListener('scroll', () => {
-      const scrollPosition = window.pageYOffset;
-      const shape1 = document.querySelector('.shape-1');
-      const shape2 = document.querySelector('.shape-2');
-      
-      gsap.to(shape1, {
-        y: scrollPosition * 0.2,
-        rotation: scrollPosition * 0.05,
-        ease: 'none'
+    const shape1 = document.querySelector('.shape-1');
+    const shape2 = document.querySelector('.shape-2');
+    if (shape1 || shape2) {
+      window.addEventListener('scroll', () => {
+        const scrollPosition = window.pageYOffset;
+        if (shape1) {
+          gsap.to(shape1, {
+            y: scrollPosition * 0.2,
+            rotation: scrollPosition * 0.05,
+            ease: 'none'
+          });
+        }
+        if (shape2) {
+          gsap.to(shape2, {
+            y: scrollPosition * 0.3,
+            rotation: -scrollPosition * 0.03,
+            ease: 'none'
+          });
+        }
       });
-      
-      gsap.to(shape2, {
-        y: scrollPosition * 0.3,
-        rotation: -scrollPosition * 0.03,
-        ease: 'none'
+    }
+
+    if (typeof ScrollTrigger !== 'undefined') {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const revealSection = document.getElementById("reveal-section");
+      const textLines = gsap.utils.toArray(".reveal-line span");
+
+      if (revealSection && textLines.length > 0) {
+        const isMobile = window.innerWidth < 768;
+        const tl = gsap.timeline({
+          scrollTrigger: {
+            trigger: revealSection,
+            start: "top top",
+            end: isMobile ? "+=1400" : "+=2400",
+            pin: true,
+            scrub: 0.6,
+            markers: false,
+            onLeave: () => {
+              gsap.to(revealSection, { opacity: 0.7, duration: 0.5 });
+            },
+            onEnterBack: () => {
+              gsap.to(revealSection, { opacity: 1, duration: 0.5 });
+            }
+          }
+        });
+
+        textLines.forEach((line, i) => {
+          tl.to(line, {
+            backgroundSize: "100% 100%",
+            color: "transparent",
+            duration: 1.4,
+            ease: "power1.inOut"
+          }, i * 0.35);
+        });
+      }
+    }
+
+    // Floating bubble parallax effect
+    const bubble1 = document.querySelector('.bubble-purple');
+    const bubble2 = document.querySelector('.bubble-blue');
+    if (bubble1 || bubble2) {
+      window.addEventListener('scroll', () => {
+        const scrollY = window.pageYOffset;
+        if (bubble1) {
+          gsap.to(bubble1, {
+            y: scrollY * 0.2,
+            rotation: scrollY * 0.05,
+            ease: "none"
+          });
+        }
+        if (bubble2) {
+          gsap.to(bubble2, {
+            y: scrollY * 0.3,
+            rotation: -scrollY * 0.03,
+            ease: "none"
+          });
+        }
       });
-    });
-
-
-
-
-    gsap.registerPlugin(ScrollTrigger);
-
-const revealSection = document.getElementById("reveal-section");
-const textLines = gsap.utils.toArray(".reveal-line span");
-
-const tl = gsap.timeline({
-  scrollTrigger: {
-    trigger: revealSection,
-    start: "top top",
-    end: "+=3000",
-    pin: true,
-    scrub: 0.5,
-    markers: false,
-    onLeave: () => {
-      gsap.to(revealSection, { opacity: 0.5, duration: 0.5 });
-    },
-    onEnterBack: () => {
-      gsap.to(revealSection, { opacity: 1, duration: 0.5 });
     }
   }
-});
 
-textLines.forEach((line, i) => {
-  tl.to(line, {
-    backgroundSize: "100% 100%",
-    color: "transparent",
-    duration: 1.5,
-    ease: "power2.inOut"
-  }, i * 0.3);
-});
-
-// Floating bubble parallax effect
-window.addEventListener('scroll', () => {
-  const scrollY = window.pageYOffset;
-  const bubble1 = document.querySelector('.bubble-purple');
-  const bubble2 = document.querySelector('.bubble-blue');
-
-  gsap.to(bubble1, {
-    y: scrollY * 0.2,
-    rotation: scrollY * 0.05,
-    ease: "none"
-  });
-
-  gsap.to(bubble2, {
-    y: scrollY * 0.3,
-    rotation: -scrollY * 0.03,
-    ease: "none"
-  });
-});
-
-    
-    // Dynamic logo slider speed based on mouse position
-    const logoSlider = document.querySelector('.logo-slider-container');
-    const primaryTrack = document.querySelector('.logo-slider-track.primary');
-    const secondaryTrack = document.querySelector('.logo-slider-track.secondary');
-    
+  // Dynamic logo slider speed based on mouse position
+  const logoSlider = document.querySelector('.logo-slider-container');
+  const primaryTrack = document.querySelector('.logo-slider-track.primary');
+  const secondaryTrack = document.querySelector('.logo-slider-track.secondary');
+  
+  if (logoSlider && primaryTrack && secondaryTrack) {
     logoSlider.addEventListener('mousemove', (e) => {
       const rect = logoSlider.getBoundingClientRect();
       const x = e.clientX - rect.left;
@@ -384,3 +425,4 @@ window.addEventListener('scroll', () => {
       primaryTrack.style.animationDuration = '30s';
       secondaryTrack.style.animationDuration = '30s';
     });
+  }
